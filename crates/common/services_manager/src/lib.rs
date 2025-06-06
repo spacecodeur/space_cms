@@ -3,12 +3,14 @@ use url::Url;
 
 #[derive(Debug)]
 pub enum ServicesName {
+    DB,
     WEB,
 }
 
 impl ServicesName {
     fn as_str(&self) -> &'static str {
         match self {
+            ServicesName::DB => "db",
             ServicesName::WEB => "web",
         }
     }

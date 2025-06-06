@@ -18,7 +18,9 @@ This framework is designed for Unix-based systems and requires Docker for contai
 
 ## Quick Start
 
-space_mship comes with a default `web` microservice pre-configured as an example and starting point.
+This project includes two main microservices:
+- **web**: Next.js frontend application for the CMS interface
+- **db**: PostgreSQL database with pgAdmin for storing CMS content
 
 ### Initial Setup
 ```bash
@@ -95,16 +97,19 @@ your-project/
 ├── commands/                       # All available commands
 │   ├── make/service/               # Service creation tools
 │   ├── services/                   # Per-service management
-│   │   └── web/                    # Default web service (included)
+│   │   ├── web/                    # Next.js frontend service
+│   │   └── db/                     # PostgreSQL database service
 │   └── tools/                      # Development utilities
 ├── crates/                         # Rust workspace
 │   ├── common/                     # Shared libraries
 │   │   ├── httpserver/             # HTTP server utilities
 │   │   └── services_manager/       # Service discovery
 │   └── services/                   # Your microservices
-│       └── web/                    # Default web service (included)
+│       ├── web/                    # Next.js frontend (Note: Not using Rust)
+│       └── db/                     # Database service management
 ├── docker/                         # Docker configurations
-│   └── web/                        # Default web service config (included)
+│   ├── web/                        # Next.js service config
+│   └── db/                         # PostgreSQL/pgAdmin config
 └── .env                            # Environment configuration
 ```
 

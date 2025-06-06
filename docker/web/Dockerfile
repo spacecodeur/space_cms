@@ -1,7 +1,6 @@
-# Use the specified Rust version and base OS as the base image
-ARG BASE_OS
-ARG RUST_VERSION
-FROM rust:${RUST_VERSION}-${BASE_OS}
+# Use Node.js as the base image for Next.js
+ARG NODE_VERSION=22
+FROM node:${NODE_VERSION}-bookworm-slim
 
 RUN apt update
 
@@ -21,3 +20,7 @@ WORKDIR /app
 RUN chown -R appuser:appuser /app
 
 USER appuser
+
+# Install Next.js dependencies when container starts
+# The actual npm install will be handled by the start script to ensure
+# package.json is available from the mounted volume

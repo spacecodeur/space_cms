@@ -25,6 +25,22 @@ Space CMS is a versatile content management system that enables content creators
      - Private tutoring sessions related to workshops
      - Personalized guidance and mentoring
 
+### Current Microservices Architecture
+
+The CMS is built using a microservices architecture with the following services:
+
+1. **web** (Port 3000)
+   - Next.js 15+ frontend application
+   - Provides the user interface for content creation and consumption
+   - Handles user interactions and displays content
+   - Communicates with backend services via API calls
+
+2. **db**
+   - PostgreSQL database (Port 5432) for persistent storage
+   - pgAdmin interface (Port 5050) for database administration
+   - Stores all CMS content
+   - Handles all content-related data operations
+
 ## About space_mship Integration
 
 This project uses [**space_mship**](https://github.com/spacecodeur/space_mship), a development framework for building and managing scalable microservice architectures. The framework provides a standardized command-line interface (`./cli.sh`) for managing the entire lifecycle of microservices in our distributed system.

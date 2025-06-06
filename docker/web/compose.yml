@@ -10,13 +10,11 @@ services:
       context: ../../
       dockerfile: ./docker/web/Dockerfile
       args:
-        RUST_VERSION: 1.86
-        BASE_OS: slim
+        NODE_VERSION: 22
     volumes:
       - ../..:/app:rw
-      - ../../crates:/app/crates:ro
-      - ../../crates/common:/app/crates/common:rw
-      - ../../crates/web:/app/crates/web:rw
+    ports:
+      - "3000:3000"
     tty: true
     command: ["docker/web/post_build.sh"]
     networks:
