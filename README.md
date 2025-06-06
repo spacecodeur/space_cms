@@ -20,6 +20,12 @@ This framework is designed for Unix-based systems and requires Docker for contai
 
 space_mship comes with a default `web` microservice pre-configured as an example and starting point.
 
+### Initial Setup
+```bash
+# Configure git to use project commit hooks
+git config core.hooksPath .git-hooks
+```
+
 ### Create a new microservice
 ```bash
 ./cli.sh commands/make/service/new.sh
