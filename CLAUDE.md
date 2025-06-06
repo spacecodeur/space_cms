@@ -1,21 +1,46 @@
-# Microservices Development with space_mship Framework
+# Space CMS - Content Management System with Appointment Booking
+
+## Project Overview
+
+Space CMS is a versatile content management system that enables content creators to share their expertise through various content formats while offering consultation services. The platform serves as a professional showcase where creators can publish content and visitors can book appointments for personalized sessions.
+
+### Core Features
+
+1. **Content Types**
+   - **PLATFORM_ARTICLE**: Informational content for sharing knowledge, insights, and expertise
+   - **PLATFORM_PRACTICE**: Interactive content that engages readers through practical exercises and hands-on activities
+
+2. **Appointment System**
+   - Integration with Google Calendar API for scheduling
+   - Support for both free and paid consultation slots
+   - Content creators can manage their availability
+   - Visitors can book sessions related to specific content pieces
+
+3. **Use Case Example: Kunkodio**
+   The first website to be built with this CMS will be Kunkodio, an IT-focused platform where:
+   - Visitors can freely access articles and reflections (PLATFORM_ARTICLE type)
+   - Visitors can follow practical workshops (PLATFORM_PRACTICE type)
+   - Readers can book consultation slots with content creators for:
+     - Detailed explanations about specific articles
+     - Private tutoring sessions related to workshops
+     - Personalized guidance and mentoring
 
 ## About space_mship Integration
 
 This project uses [**space_mship**](https://github.com/spacecodeur/space_mship), a development framework for building and managing scalable microservice architectures. The framework provides a standardized command-line interface (`./cli.sh`) for managing the entire lifecycle of microservices in our distributed system.
 
-## How space_mship Works in This Project
+### How space_mship Works in This Project
 
-### Command Interface (`./cli.sh`)
+#### Command Interface (`./cli.sh`)
 The main entry point for all development operations. This script:
 - Manages microservice lifecycle (build, start, stop, logs)
 - Handles container orchestration with Docker
 - Provides development tools for git, docker, and debugging
 - Automatically detects whether commands should run on host or inside containers
 
-### Available Command Categories
+#### Available Command Categories
 
-#### Microservice Management
+##### Microservice Management
 ```bash
 # Create a new microservice
 ./cli.sh commands/make/service/new.sh
@@ -34,7 +59,7 @@ The main entry point for all development operations. This script:
 ./cli.sh commands/services/{service_name}/in-container/{command}.sh
 ```
 
-#### Development Tools
+##### Development Tools
 ```bash
 # Docker management
 ./cli.sh commands/tools/docker/ls.sh
@@ -47,7 +72,7 @@ The main entry point for all development operations. This script:
 ./cli.sh commands/tools/prompt/generate-for-debug.sh
 ```
 
-### Project Structure Created by space_mship
+#### Project Structure Created by space_mship
 
 ```
 project/
@@ -63,7 +88,7 @@ project/
 └── .env                            # Environment configuration
 ```
 
-### Microservice Architecture
+#### Microservice Architecture
 
 space_mship comes with a default `web` microservice already configured, providing:
 - A working example of the framework structure
@@ -78,7 +103,7 @@ Each microservice in this project:
 - Communicates with other services via a shared Docker network
 - Is automatically registered in the service discovery system
 
-### Service Creation Workflow
+#### Service Creation Workflow
 
 When adding a new microservice:
 1. Run `./cli.sh commands/make/service/new.sh`
@@ -91,7 +116,7 @@ When adding a new microservice:
    - Assigns a unique port
    - Updates service registry
 
-### Development Best Practices with space_mship
+#### Development Best Practices with space_mship
 
 - **Service Isolation**: Each service is developed and deployed independently
 - **Standardized Commands**: Use the provided cli.sh commands for consistency
@@ -99,14 +124,14 @@ When adding a new microservice:
 - **Shared Libraries**: Use `crates/common/` for code shared between services
 - **Environment Configuration**: All config goes through `.env` file
 
-### Common Development Tasks
+#### Common Development Tasks
 
 - **Adding a feature**: Create new service or modify existing service in `crates/services/`
 - **Inter-service communication**: Use the `services_manager` crate for service discovery
 - **Debugging**: Use container shell access via `./cli.sh commands/services/{name}/container-management/shell.sh`
 - **Logs**: Monitor with `./cli.sh commands/services/{name}/container-management/logs-tail.sh`
 
-## Integration Notes
+### Integration Notes
 
 This project leverages space_mship to focus on business logic rather than infrastructure setup. The framework handles:
 - Docker orchestration and networking
