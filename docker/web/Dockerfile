@@ -1,6 +1,7 @@
-# Use Node.js as the base image for Next.js
-ARG NODE_VERSION=22
-FROM node:${NODE_VERSION}-bookworm-slim
+# Use the specified Rust version and base OS as the base image
+ARG BASE_OS
+ARG RUST_VERSION
+FROM rust:${RUST_VERSION}-${BASE_OS}
 
 RUN apt update
 
@@ -8,6 +9,9 @@ RUN apt update
 
 RUN apt install tree -y
 RUN apt install curl -y
+
+# Install dependencies for Leptos
+RUN apt install -y pkg-config libssl-dev build-essential
 
 # create container user with same rights than host user
 
@@ -20,7 +24,3 @@ WORKDIR /app
 RUN chown -R appuser:appuser /app
 
 USER appuser
-
-# Install Next.js dependencies when container starts
-# The actual npm install will be handled by the start script to ensure
-# package.json is available from the mounted volume
