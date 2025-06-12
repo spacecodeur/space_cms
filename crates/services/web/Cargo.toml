@@ -1,9 +1,21 @@
 [package]
 name = "web"
 version = "0.1.0"
-edition = "2024"
+edition = "2021"
+
+[lib]
+name = "web"
+path = "src/lib.rs"
+
+[[bin]]
+name = "web"
+path = "src/main.rs"
 
 [dependencies]
-httpserver = { path = "../../common/httpserver" }
-services_manager = { path = "../../common/services_manager" }
+leptos = { version = "0.8.2", features = ["ssr"] }
+leptos_dom = { version = "0.8.2" }
+axum = { version = "0.8" }
+tokio = { version = "1", features = ["full"] }
+tower = { version = "0.5" }
+tower-http = { version = "0.6", features = ["fs"] }
 serde = { workspace = true }
