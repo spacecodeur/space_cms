@@ -108,13 +108,13 @@ project/
 
 space_mship comes with a default `web` microservice already configured, providing:
 - A working example of the framework structure
-- Basic HTTP server using Axum
+- Full-stack web application using Leptos framework
 - Ready-to-use Docker configuration
 - All management scripts pre-configured
 
 Each microservice in this project:
 - Runs in its own Docker container for isolation
-- Is implemented in Rust using the Axum web framework
+- Is implemented in Rust using the Leptos web framework
 - Has standardized build, deployment, and management scripts
 - Communicates with other services via a shared Docker network
 - Is automatically registered in the service discovery system
