@@ -2,18 +2,17 @@
 
 ## build containers
 
-./commands.sh commands/services/app/container-management/build.sh &
-./commands.sh commands/services/db/container-management/build.sh &
+./cli.sh commands/services/web/container-management/build.sh &
+./cli.sh commands/services/db/container-management/build.sh &
 wait
 
 ## run some scripts like migrations, wasm building, ...
 
-./commands.sh commands/services/app/in-container/migrate/up-all.sh
-./commands.sh commands/services/app/in-container/wasm-build.sh
+# ./cli.sh commands/services/web/in-container/migrate/up-all.sh
 
 ## finish !
 
 echo
 echo "All set!"
-echo "Next step : ./commands.sh commands/services/app/in-container/server-start.sh"
+echo "Next step : ./cli.sh commands/services/web/in-container/start-service.sh"
 echo "Happy coding! :D"
