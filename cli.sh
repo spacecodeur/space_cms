@@ -73,7 +73,7 @@ if [[ "${PARTS[1]}" == "services" && "${PARTS[3]}" == "in-container" ]] && ! is_
     CONTAINER_NAME="${APP_NAME}-${SERVICE}-container"
 
     # keep --tty and --interactive : if not, SIGINT (ctrl+c) won't be correctly passed from host to container
-    docker exec --tty --interactive --workdir /app "$CONTAINER_NAME" ./commands.sh "$COMMAND" "${@:2}"
+    docker exec --tty --interactive --workdir /app "$CONTAINER_NAME" ./cli.sh "$COMMAND" "${@:2}"
 
 else
     # execute the command with parameters starting from the second argument
