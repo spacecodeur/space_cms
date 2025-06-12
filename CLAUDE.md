@@ -30,7 +30,7 @@ Space CMS is a versatile content management system that enables content creators
 The CMS is built using a microservices architecture with the following services:
 
 1. **web** (Port 3000)
-   - Next.js 15+ frontend application
+   - Leptos 0.8+ a full-stack, isomorphic Rust web framework leveraging fine-grained reactivity to build declarative user interfaces.
    - Provides the user interface for content creation and consumption
    - Handles user interactions and displays content
    - Communicates with backend services via API calls
