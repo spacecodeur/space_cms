@@ -6,9 +6,10 @@ Space CMS is a versatile content management system that enables content creators
 
 ### Core Features
 
-1. **Content Types**
-   - **PLATFORM_ARTICLE**: Informational content for sharing knowledge, insights, and expertise
-   - **PLATFORM_PRACTICE**: Interactive content that engages readers through practical exercises and hands-on activities
+1. **Content Management**
+   - **Articles**: Unified content type for all knowledge sharing
+   - **Tag System**: Flexible categorization with tags like 'practice', 'tutorial', 'theory', 'guide', etc.
+   - Articles can evolve their nature through tags without changing their core type
 
 2. **Appointment System**
    - Integration with Google Calendar API for scheduling
@@ -18,8 +19,8 @@ Space CMS is a versatile content management system that enables content creators
 
 3. **Use Case Example: Kunkodio**
    The first website to be built with this CMS will be Kunkodio, an IT-focused platform where:
-   - Visitors can freely access articles and reflections (PLATFORM_ARTICLE type)
-   - Visitors can follow practical workshops (PLATFORM_PRACTICE type)
+   - Visitors can freely access all articles and reflections
+   - Visitors can follow practical workshops (articles tagged as 'practice')
    - Readers can book consultation slots with content creators for:
      - Detailed explanations about specific articles
      - Private tutoring sessions related to workshops

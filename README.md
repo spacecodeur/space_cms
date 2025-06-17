@@ -19,7 +19,7 @@ This framework is designed for Unix-based systems and requires Docker for contai
 ## Quick Start
 
 This project includes two main microservices:
-- **web**: Next.js frontend application for the CMS interface
+- **web**: Leptos frontend application for the CMS interface
 - **db**: PostgreSQL database with pgAdmin for storing CMS content
 
 ### Initial Setup
@@ -97,7 +97,7 @@ your-project/
 ├── commands/                       # All available commands
 │   ├── make/service/               # Service creation tools
 │   ├── services/                   # Per-service management
-│   │   ├── web/                    # Next.js frontend service
+│   │   ├── web/                    # Leptos frontend service
 │   │   └── db/                     # PostgreSQL database service
 │   └── tools/                      # Development utilities
 ├── crates/                         # Rust workspace
@@ -105,10 +105,10 @@ your-project/
 │   │   ├── httpserver/             # HTTP server utilities
 │   │   └── services_manager/       # Service discovery
 │   └── services/                   # Your microservices
-│       ├── web/                    # Next.js frontend (Note: Not using Rust)
+│       ├── web/                    # Leptos frontend service
 │       └── db/                     # Database service management
 ├── docker/                         # Docker configurations
-│   ├── web/                        # Next.js service config
+│   ├── web/                        # Leptos service config
 │   └── db/                         # PostgreSQL/pgAdmin config
 └── .env                            # Environment configuration
 ```
