@@ -1,17 +1,32 @@
-# Use the specified Rust version and base OS as the base image
-ARG BASE_OS
-ARG RUST_VERSION
-FROM rust:${RUST_VERSION}-${BASE_OS}
+# Use Rust nightly for Leptos development
+FROM rustlang/rust:nightly-bookworm
 
-RUN apt update
+# Update package list
+RUN apt-get update -y
 
-# install some usefull tools/shortcuts
+# Install some useful tools/shortcuts
+RUN apt-get install -y tree curl wget
 
-RUN apt install tree -y
-RUN apt install curl -y
+# Install required tools for Leptos development
+RUN apt-get install -y --no-install-recommends \
+    clang \
+    pkg-config \
+    libssl-dev \
+    build-essential \
+    && apt-get clean -y \
+    && rm -rf /var/lib/apt/lists/*
 
-# Install dependencies for Leptos
-RUN apt install -y pkg-config libssl-dev build-essential
+# Install cargo-binstall for easier cargo extension installation
+RUN wget https://github.com/cargo-bins/cargo-binstall/releases/latest/download/cargo-binstall-x86_64-unknown-linux-musl.tgz \
+    && tar -xvf cargo-binstall-x86_64-unknown-linux-musl.tgz \
+    && cp cargo-binstall /usr/local/cargo/bin \
+    && rm cargo-binstall-x86_64-unknown-linux-musl.tgz cargo-binstall
+
+# Install cargo-leptos using cargo-binstall
+RUN cargo binstall cargo-leptos -y
+
+# Add the WASM target for Leptos
+RUN rustup target add wasm32-unknown-unknown
 
 # create container user with same rights than host user
 
@@ -24,3 +39,5 @@ WORKDIR /app
 RUN chown -R appuser:appuser /app
 
 USER appuser
+
+WORKDIR /app/crates/services/web

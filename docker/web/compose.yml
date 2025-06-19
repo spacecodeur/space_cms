@@ -16,11 +16,12 @@ services:
       - ../..:/app:rw
       - ../../crates:/app/crates:ro
       - ../../crates/common:/app/crates/common:rw
-      - ../../crates/web:/app/crates/web:rw
+      - ../../crates/services/web:/app/crates/services/web:rw
     ports:
       - "3000:3000"
+      - "3001:3001"
     tty: true
-    command: ["docker/web/post_build.sh"]
+    command: ["/app/docker/web/post_build.sh"]
     networks:
       - default
 
