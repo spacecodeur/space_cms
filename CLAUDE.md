@@ -35,6 +35,15 @@ The CMS is built using a microservices architecture with the following services:
    - Provides the user interface for content creation and consumption
    - Handles user interactions and displays content
    - Communicates with backend services via API calls
+   
+   **IMPORTANT**: 
+   - ALWAYS read the Leptos documentation summary at `/home/wildmatthieu/documentations/book/src/SUMMARY.md` at the start of every session to stay updated with the latest patterns
+   - When working on the web service, always refer to the latest Leptos documentation available locally at `/home/wildmatthieu/documentations/book/src/`
+   - Key sections include:
+     - Components and Props: `/home/wildmatthieu/documentations/book/src/view/03_components.md`
+     - Reactivity patterns: `/home/wildmatthieu/documentations/book/src/reactivity/` directory
+     - Server-side rendering: `/home/wildmatthieu/documentations/book/src/ssr/` directory
+     - Forms and inputs: `/home/wildmatthieu/documentations/book/src/view/05_forms.md`
 
 2. **db**
    - PostgreSQL database (Port 5432) for persistent storage
