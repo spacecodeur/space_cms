@@ -1,12 +1,14 @@
 use leptos::prelude::*;
 use chrono::{DateTime, Utc};
+use crate::config::SiteConfig;
 use crate::types::{Article, ContentType};
 
 #[component]
 pub fn Contents() -> impl IntoView {
     let selected_type = RwSignal::new(ContentType::Latest);
+    // let site_config = expect_context::<SiteConfig>();
     
-    // Hardcoded articles for now
+    // TODO: Load articles from database
     let articles = vec![
         Article {
             id: 1,
@@ -62,6 +64,8 @@ pub fn Contents() -> impl IntoView {
 fn TypeSelector(
     selected_type: RwSignal<ContentType>,
 ) -> impl IntoView {
+    let site_config = expect_context::<SiteConfig>();
+    
     view! {
         <div class="type-selector">
             <button 
@@ -69,14 +73,14 @@ fn TypeSelector(
                 class:active=move || selected_type.get() == ContentType::Latest
                 on:click=move |_| selected_type.set(ContentType::Latest)
             >
-                "Nouveautés"
+                {site_config.ui_strings.content_type_latest}
             </button>
             <button 
                 class="type-selector__button"
                 class:active=move || selected_type.get() == ContentType::Popular
                 on:click=move |_| selected_type.set(ContentType::Popular)
             >
-                "Populaires"
+                {site_config.ui_strings.content_type_popular}
             </button>
         </div>
     }
@@ -104,7 +108,8 @@ fn ArticlesList(
 
 #[component]
 fn ArticleCard(article: Article) -> impl IntoView {
-    let formatted_date = article.date.format("%d/%m/%Y").to_string();
+    let site_config = expect_context::<SiteConfig>();
+    let formatted_date = article.date.format(&site_config.date_format).to_string();
     let title = article.title.clone();
     let author_name = article.author_name.clone();
     

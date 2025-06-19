@@ -1,9 +1,11 @@
 use leptos::{ev::{SubmitEvent}, prelude::*};
+use crate::config::SiteConfig;
 
 #[component]
 pub fn Search() -> impl IntoView {
     let (is_loading, set_is_loading) = signal(false);
     let (search_query, set_search_query) = signal(String::new());
+    let site_config = expect_context::<SiteConfig>();
 
     let on_search = move |ev: SubmitEvent| {
         ev.prevent_default();
@@ -25,7 +27,7 @@ pub fn Search() -> impl IntoView {
                 <input 
                     type="text"
                     class="search__input"
-                    placeholder="Rechercher..."
+                    placeholder=site_config.ui_strings.search_placeholder
                     value=search_query
                     on:input=move |ev| set_search_query.set(event_target_value(&ev))
                 />

@@ -5,6 +5,7 @@ use leptos_router::{
     StaticSegment,
 };
 
+use crate::config::SiteConfig;
 use crate::pages::HomePage;
 
 pub fn shell(options: LeptosOptions) -> impl IntoView {
@@ -29,6 +30,10 @@ pub fn shell(options: LeptosOptions) -> impl IntoView {
 pub fn App() -> impl IntoView {
     // Provides context that manages stylesheets, titles, meta tags, etc.
     provide_meta_context();
+    
+    // Site configuration
+    let site_config = SiteConfig::new();
+    provide_context(site_config.clone());
 
     view! {
         // injects a stylesheet into the document <head>
@@ -36,12 +41,12 @@ pub fn App() -> impl IntoView {
         <Stylesheet id="leptos" href="/pkg/web.css"/>
 
         // sets the document title
-        <Title text="Kunkodio - Learn IT with Practice"/>
+        <Title text=site_config.title/>
 
         // content for this welcome page
         <Router>
             <main>
-                <Routes fallback=|| "Page not found.".into_view()>
+                <Routes fallback=move || site_config.ui_strings.page_not_found.clone().into_view()>
                     <Route path=StaticSegment("") view=HomePage/>
                 </Routes>
             </main>
