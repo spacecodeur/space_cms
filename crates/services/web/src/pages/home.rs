@@ -1,14 +1,13 @@
 use leptos::prelude::*;
-use crate::components::layout::{Header, Footer};
-use crate::components::home::Hero;
+use crate::components::{Header, Search, Contents};
 
 #[component]
 pub fn HomePage() -> impl IntoView {
     view! {
-        <Header />
-        <main class="main-content">
-            <Hero />
-        </main>
-        <Footer />
+        <div class="home-page">
+            <Header />
+            <Search />
+            <Contents />
+        </div>
     }
 }
