@@ -1,0 +1,65 @@
+// Breakpoints based on Tailwind CSS defaults
+$breakpoints: (
+    sm: 40rem,    // 640px
+    md: 48rem,    // 768px
+    lg: 64rem,    // 1024px
+    xl: 80rem,    // 1280px
+    2xl: 96rem    // 1536px
+);
+
+// Media query mixins
+@mixin media-up($breakpoint) {
+    $bp-value: map-get($breakpoints, $breakpoint);
+    
+    @if $bp-value {
+        @media (width >= #{$bp-value}) {
+            @content;
+        }
+    } @else {
+        @error "Breakpoint '#{$breakpoint}' not found. Available breakpoints: #{map-keys($breakpoints)}";
+    }
+}
+
+@mixin media-down($breakpoint) {
+    $bp-value: map-get($breakpoints, $breakpoint);
+    
+    @if $bp-value {
+        @media (width < #{$bp-value}) {
+            @content;
+        }
+    } @else {
+        @error "Breakpoint '#{$breakpoint}' not found. Available breakpoints: #{map-keys($breakpoints)}";
+    }
+}
+
+@mixin media-between($min-breakpoint, $max-breakpoint) {
+    $min-value: map-get($breakpoints, $min-breakpoint);
+    $max-value: map-get($breakpoints, $max-breakpoint);
+    
+    @if $min-value and $max-value {
+        @media (width >= #{$min-value}) and (width < #{$max-value}) {
+            @content;
+        }
+    } @else {
+        @error "One or both breakpoints not found. Available breakpoints: #{map-keys($breakpoints)}";
+    }
+}
+
+// Utility mixins for common patterns
+@mixin mobile-only {
+    @include media-down(sm) {
+        @content;
+    }
+}
+
+@mixin tablet-only {
+    @include media-between(sm, lg) {
+        @content;
+    }
+}
+
+@mixin desktop-up {
+    @include media-up(lg) {
+        @content;
+    }
+}

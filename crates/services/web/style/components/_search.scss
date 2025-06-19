@@ -1,0 +1,84 @@
+// Search component styles
+.search {
+    padding: $spacing-base;
+    
+    @include media-up(md) {
+        padding: $spacing-lg $spacing-xl;
+    }
+    
+    &__form {
+        @include flex-center;
+        background-color: $color-surface;
+        border-radius: $radius-full;
+        padding: $spacing-sm $spacing-base;
+        box-shadow: $shadow-md;
+        max-width: 600px;
+        margin: 0 auto;
+        transition: box-shadow $transition-base;
+        
+        @include media-up(md) {
+            padding: $spacing-md $spacing-lg;
+        }
+        
+        &:focus-within {
+            box-shadow: $shadow-lg;
+        }
+    }
+    
+    &__icon-ai {
+        color: $color-primary;
+        margin-right: $spacing-sm;
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+        
+        svg {
+            width: 24px;
+            height: 24px;
+            
+            @include media-up(md) {
+                width: 28px;
+                height: 28px;
+            }
+        }
+    }
+    
+    &__input {
+        flex: 1;
+        border: none;
+        outline: none;
+        font-size: $font-size-base;
+        padding: $spacing-sm 0;
+        background: transparent;
+        
+        @include media-up(md) {
+            font-size: $font-size-lg;
+        }
+        
+        &::placeholder {
+            color: $color-text-secondary;
+        }
+    }
+    
+    &__loading {
+        width: 24px;
+        height: 24px;
+        flex-shrink: 0;
+        
+        .loading-spinner {
+            animation: spin 1s linear infinite;
+        }
+        
+        .spinner-circle {
+            stroke: $color-primary;
+            stroke-dasharray: 60;
+            stroke-dashoffset: 45;
+        }
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
