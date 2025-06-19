@@ -16,7 +16,7 @@ services:
       - ../..:/app:rw
       - ../../crates:/app/crates:ro
       - ../../crates/common:/app/crates/common:rw
-      - ../../crates/<new_service_name>:/app/crates/<new_service_name>:rw
+      - ../../crates/services/<new_service_name>:/app/crates/services/<new_service_name>:rw
     tty: true
     command: ["/app/docker/<new_service_name>/post_build.sh"]
     networks:
