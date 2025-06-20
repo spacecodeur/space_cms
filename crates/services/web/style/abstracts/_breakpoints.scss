@@ -1,3 +1,5 @@
+@use 'sass:map';
+
 // Breakpoints based on Tailwind CSS defaults
 $breakpoints: (
     sm: 40rem,    // 640px
@@ -9,39 +11,39 @@ $breakpoints: (
 
 // Media query mixins
 @mixin media-up($breakpoint) {
-    $bp-value: map-get($breakpoints, $breakpoint);
+    $bp-value: map.get($breakpoints, $breakpoint);
     
     @if $bp-value {
         @media (width >= #{$bp-value}) {
             @content;
         }
     } @else {
-        @error "Breakpoint '#{$breakpoint}' not found. Available breakpoints: #{map-keys($breakpoints)}";
+        @error "Breakpoint '#{$breakpoint}' not found. Available breakpoints: #{map.keys($breakpoints)}";
     }
 }
 
 @mixin media-down($breakpoint) {
-    $bp-value: map-get($breakpoints, $breakpoint);
+    $bp-value: map.get($breakpoints, $breakpoint);
     
     @if $bp-value {
         @media (width < #{$bp-value}) {
             @content;
         }
     } @else {
-        @error "Breakpoint '#{$breakpoint}' not found. Available breakpoints: #{map-keys($breakpoints)}";
+        @error "Breakpoint '#{$breakpoint}' not found. Available breakpoints: #{map.keys($breakpoints)}";
     }
 }
 
 @mixin media-between($min-breakpoint, $max-breakpoint) {
-    $min-value: map-get($breakpoints, $min-breakpoint);
-    $max-value: map-get($breakpoints, $max-breakpoint);
+    $min-value: map.get($breakpoints, $min-breakpoint);
+    $max-value: map.get($breakpoints, $max-breakpoint);
     
     @if $min-value and $max-value {
         @media (width >= #{$min-value}) and (width < #{$max-value}) {
             @content;
         }
     } @else {
-        @error "One or both breakpoints not found. Available breakpoints: #{map-keys($breakpoints)}";
+        @error "One or both breakpoints not found. Available breakpoints: #{map.keys($breakpoints)}";
     }
 }
 

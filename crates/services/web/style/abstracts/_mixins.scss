@@ -1,4 +1,5 @@
 // Common utility mixins
+@use 'sass:map';
 
 // Container mixin
 @mixin container {
@@ -8,19 +9,19 @@
     padding-right: $spacing-base;
     
     @include media-up(sm) {
-        max-width: map-get($breakpoints, sm);
+        max-width: map.get($breakpoints, sm);
     }
     
     @include media-up(md) {
-        max-width: map-get($breakpoints, md);
+        max-width: map.get($breakpoints, md);
     }
     
     @include media-up(lg) {
-        max-width: map-get($breakpoints, lg);
+        max-width: map.get($breakpoints, lg);
     }
     
     @include media-up(xl) {
-        max-width: map-get($breakpoints, xl);
+        max-width: map.get($breakpoints, xl);
     }
 }
 

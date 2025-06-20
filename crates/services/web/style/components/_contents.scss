@@ -48,7 +48,7 @@
         
         &:hover:not(.active) {
             background-color: $color-background;
-            border-color: darken($color-border, 10%);
+            border-color: $color-text-secondary;
         }
         
         &:focus-visible {
