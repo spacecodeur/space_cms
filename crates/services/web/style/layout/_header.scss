@@ -2,23 +2,27 @@
 .header {
     background-color: $color-surface;
     box-shadow: $shadow;
-    padding: $spacing-base;
+    padding: $spacing-lg;
     position: sticky;
     top: 0;
     z-index: 100;
     
     @include media-up(lg) {
-        padding: $spacing-base $spacing-xl;
+        padding: $spacing-xl;
     }
     
     &__content {
-        @include flex-between;
         @include container;
+        & {
+            text-align: center;
+            position: relative;
+        }
     }
     
     &__title {
         font-size: $font-size-xl;
         font-weight: $font-weight-bold;
+        margin: 0;
         
         @include media-up(md) {
             font-size: $font-size-2xl;
@@ -32,6 +36,10 @@
         display: flex;
         flex-direction: column;
         justify-content: space-around;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
         
         @include media-up(lg) {
             display: none;
