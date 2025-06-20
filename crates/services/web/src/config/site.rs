@@ -22,8 +22,8 @@ impl Default for SiteConfig {
         Self {
             name: "Kunkodio".to_string(),
             title: "Kunkodio - Learn IT with Practice".to_string(),
-            tagline: "Learn IT with Practice".to_string(),
-            description: "A platform for IT learning through practical workshops and articles".to_string(),
+            tagline: "Explorez l'actualité IT, apprenez par la pratique et échangez avec nos experts passionnés !".to_string(),
+            description: "Une plateforme de gestion de contenu permettant de partager des connaissances et d'offrir des services de consultation".to_string(),
             locale: "fr".to_string(),
             date_format: "%d/%m/%Y".to_string(),
             ui_strings: UIStrings::default(),

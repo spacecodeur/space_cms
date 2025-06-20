@@ -1,0 +1,29 @@
+// Tagline component styles
+.tagline {
+    text-align: center;
+    padding: 2rem 1rem;
+    
+    @include media-up(sm) {
+        padding: 2.5rem 1.5rem;
+    }
+    
+    @include media-up(md) {
+        padding: 3rem 2rem;
+    }
+    
+    &__text {
+        font-size: 1.125rem;
+        line-height: 1.75;
+        color: var(--color-text-secondary);
+        max-width: 42rem;
+        margin: 0 auto;
+        
+        @include media-up(sm) {
+            font-size: 1.25rem;
+        }
+        
+        @include media-up(lg) {
+            font-size: 1.5rem;
+        }
+    }
+}
