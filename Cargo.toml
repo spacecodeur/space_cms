@@ -1,0 +1,27 @@
+[workspace]
+resolver = "2"
+members = [
+    "app",
+    "crates/frontend",
+    "crates/backend",
+    "crates/shared",
+]
+
+[workspace.dependencies]
+leptos = { version = "0.8.0", features = ["nightly"] }
+leptos_router = { version = "0.8.0", features = ["nightly"] }
+leptos_meta = { version = "0.8.0" }
+leptos_axum = { version = "0.8.0" }
+axum = { version = "0.8.0" }
+tokio = { version = "1", features = ["rt-multi-thread"] }
+wasm-bindgen = { version = "=0.2.100" }
+console_error_panic_hook = "0.1.7"
+serde = { version = "1.0", features = ["derive"] }
+
+# Defines a size-optimized profile for the WASM bundle in release mode
+[profile.wasm-release]
+inherits = "release"
+opt-level = 'z'
+lto = true
+codegen-units = 1
+panic = "abort"

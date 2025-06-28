@@ -1,0 +1,23 @@
+[package]
+name = "space_cms_frontend"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+leptos = { workspace = true }
+leptos_router = { workspace = true }
+leptos_meta = { workspace = true }
+space_cms_shared = { path = "../shared" }
+wasm-bindgen = { workspace = true, optional = true }
+console_error_panic_hook = { workspace = true }
+
+[features]
+hydrate = [
+    "leptos/hydrate",
+    "dep:wasm-bindgen",
+]
+ssr = [
+    "leptos/ssr",
+    "leptos_router/ssr",
+    "leptos_meta/ssr",
+]

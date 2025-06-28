@@ -1,0 +1,59 @@
+[package]
+name = "space_cms"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+leptos = { workspace = true }
+leptos_router = { workspace = true }
+leptos_meta = { workspace = true }
+leptos_axum = { workspace = true, optional = true }
+axum = { workspace = true, optional = true }
+tokio = { workspace = true, optional = true }
+wasm-bindgen = { workspace = true, optional = true }
+console_error_panic_hook = { workspace = true }
+
+# Internal dependencies
+space_cms_frontend = { path = "../crates/frontend" }
+space_cms_backend = { path = "../crates/backend", optional = true }
+space_cms_shared = { path = "../crates/shared" }
+
+[features]
+hydrate = [
+    "leptos/hydrate",
+    "space_cms_frontend/hydrate",
+    "space_cms_shared/hydrate",
+    "dep:wasm-bindgen",
+]
+ssr = [
+    "dep:axum",
+    "dep:tokio",
+    "dep:leptos_axum",
+    "dep:space_cms_backend",
+    "leptos/ssr",
+    "leptos_meta/ssr",
+    "leptos_router/ssr",
+    "space_cms_frontend/ssr",
+    "space_cms_shared/ssr",
+]
+
+[package.metadata.leptos]
+output-name = "space_cms"
+site-root = "../target/site"
+site-pkg-dir = "pkg"
+style-file = "../style/main.scss"
+assets-dir = "../public"
+site-addr = "127.0.0.1:3000"
+reload-port = 3001
+end2end-cmd = "npx playwright test"
+end2end-dir = "../end2end"
+browserquery = "defaults"
+env = "DEV"
+bin-features = ["ssr"]
+bin-default-features = false
+lib-features = ["hydrate"]
+lib-default-features = false
+lib-profile-release = "wasm-release"
