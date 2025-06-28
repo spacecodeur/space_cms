@@ -10,3 +10,6 @@ leptos = { workspace = true, features = ["ssr"] }
 leptos_axum = { workspace = true }
 space_cms_shared = { path = "../shared" }
 serde = { workspace = true }
+sqlx = { version = "0.8", features = ["runtime-tokio-rustls", "sqlite", "chrono", "uuid"] }
+chrono = { workspace = true }
+uuid = { workspace = true }

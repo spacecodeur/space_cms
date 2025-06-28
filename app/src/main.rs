@@ -6,7 +6,23 @@ async fn main() {
     use leptos::prelude::*;
     use leptos_axum::{generate_route_list, LeptosRoutes};
     use space_cms::app::*;
-    use space_cms_backend::api_routes;
+    use space_cms_backend::{api_routes, create_pool, run_migrations};
+
+    // Load environment variables
+    dotenvy::dotenv().ok();
+    
+    // Setup database
+    let database_url = std::env::var("DATABASE_URL")
+        .unwrap_or_else(|_| "sqlite:space_cms.db".to_string());
+    
+    let pool = create_pool(&database_url)
+        .await
+        .expect("Failed to create database pool");
+    
+    // Run migrations
+    run_migrations(&pool)
+        .await
+        .expect("Failed to run migrations");
 
     let conf = get_configuration(None).unwrap();
     let addr = conf.leptos_options.site_addr;
@@ -19,7 +35,7 @@ async fn main() {
             let leptos_options = leptos_options.clone();
             move || shell(leptos_options.clone())
         })
-        .merge(api_routes())
+        .merge(api_routes(pool))
         .fallback(leptos_axum::file_and_error_handler(shell))
         .with_state(leptos_options);
 

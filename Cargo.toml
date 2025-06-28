@@ -17,6 +17,8 @@ tokio = { version = "1", features = ["rt-multi-thread"] }
 wasm-bindgen = { version = "=0.2.100" }
 console_error_panic_hook = "0.1.7"
 serde = { version = "1.0", features = ["derive"] }
+chrono = { version = "0.4", features = ["serde"] }
+uuid = { version = "1.0", features = ["v4", "serde"] }
 
 # Defines a size-optimized profile for the WASM bundle in release mode
 [profile.wasm-release]
