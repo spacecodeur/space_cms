@@ -20,6 +20,7 @@ console_error_panic_hook = { workspace = true }
 space_cms_frontend = { path = "../crates/frontend" }
 space_cms_backend = { path = "../crates/backend", optional = true }
 space_cms_shared = { path = "../crates/shared" }
+dotenvy = { version = "0.15", optional = true }
 
 [features]
 hydrate = [
@@ -33,6 +34,7 @@ ssr = [
     "dep:tokio",
     "dep:leptos_axum",
     "dep:space_cms_backend",
+    "dep:dotenvy",
     "leptos/ssr",
     "leptos_meta/ssr",
     "leptos_router/ssr",
