@@ -1,12 +1,13 @@
 #[cfg(feature = "ssr")]
 #[tokio::main]
 async fn main() {
-    use axum::Router;
+    use axum::{Router, routing::get};
     use leptos::logging::log;
     use leptos::prelude::*;
     use leptos_axum::{generate_route_list, LeptosRoutes};
     use space_cms::app::*;
     use space_cms_backend::{api_routes, create_pool, run_migrations};
+    use space_cms_frontend::api::*;
 
     // Load environment variables
     dotenvy::dotenv().ok();
@@ -35,7 +36,7 @@ async fn main() {
             let leptos_options = leptos_options.clone();
             move || shell(leptos_options.clone())
         })
-        .merge(api_routes(pool))
+        .merge(api_routes(pool.clone()))
         .fallback(leptos_axum::file_and_error_handler(shell))
         .with_state(leptos_options);
 

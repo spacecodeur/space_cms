@@ -6,6 +6,7 @@ edition = "2021"
 [dependencies]
 serde = { workspace = true }
 leptos = { workspace = true, optional = true }
+chrono = { workspace = true }
 
 [features]
 default = []

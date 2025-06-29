@@ -4,7 +4,7 @@ use leptos_router::{
     components::{Route, Router, Routes},
     StaticSegment,
 };
-use space_cms_frontend::HomePage;
+use space_cms_frontend::{HomePage, LoginPage, RegisterPage};
 
 pub fn shell(options: LeptosOptions) -> impl IntoView {
     view! {
@@ -42,6 +42,8 @@ pub fn App() -> impl IntoView {
             <main>
                 <Routes fallback=|| "Page not found.".into_view()>
                     <Route path=StaticSegment("") view=HomePage/>
+                    <Route path=StaticSegment("login") view=LoginPage/>
+                    <Route path=StaticSegment("register") view=RegisterPage/>
                 </Routes>
             </main>
         </Router>

@@ -82,11 +82,22 @@ space_cms/
 - **Modular Architecture** - Clear separation of concerns
 - **Type Safety** - Leverages Rust's type system
 - **Hot Reloading** - Development server with automatic reload
+- **Authentication System** - JWT-based with login/register pages
+- **Database Integration** - SQLite with automatic migrations
 - **API Integration** - Built-in API routes alongside SSR pages
+
+## Available Pages
+
+- `/` - Home page with navigation
+- `/login` - User authentication page
+- `/register` - User registration page
 
 ## API Endpoints
 
 - `GET /api/health` - Health check endpoint
+- `POST /api/auth/login` - User authentication (via server function)
+- `POST /api/auth/register` - User registration (via server function)
+- `GET /api/protected` - Example protected endpoint
 
 ## Extending the CMS
 
@@ -110,6 +121,8 @@ space_cms/
 
 - **Leptos 0.8.0** - Full-stack Rust framework
 - **Axum** - Web server framework
+- **SQLx + SQLite** - Database with automatic migrations
+- **JWT + bcrypt** - Authentication and password hashing
 - **Tokio** - Async runtime
 - **WASM** - Client-side interactivity
 
@@ -134,6 +147,8 @@ After building for production with `cargo leptos build --release`:
    export LEPTOS_SITE_PKG_DIR="pkg"
    export LEPTOS_SITE_ADDR="127.0.0.1:3000"
    export LEPTOS_RELOAD_PORT="3001"
+   export DATABASE_URL="sqlite:space_cms.db"
+   export JWT_SECRET="your-secret-key-change-this-in-production"
    ```
 4. Run the server binary
 

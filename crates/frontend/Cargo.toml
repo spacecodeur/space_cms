@@ -8,13 +8,17 @@ leptos = { workspace = true }
 leptos_router = { workspace = true }
 leptos_meta = { workspace = true }
 space_cms_shared = { path = "../shared" }
+chrono = { workspace = true }
+gloo-net = "0.4"
 wasm-bindgen = { workspace = true, optional = true }
 console_error_panic_hook = { workspace = true }
+web-sys = { version = "0.3", features = ["Window", "Storage"], optional = true }
 
 [features]
 hydrate = [
     "leptos/hydrate",
     "dep:wasm-bindgen",
+    "dep:web-sys",
 ]
 ssr = [
     "leptos/ssr",
